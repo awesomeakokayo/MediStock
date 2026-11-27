@@ -1766,3 +1766,16 @@ Copy into the global stylesheet. Map these to the Tailwind theme (`theme.extend.
 ---
 
 **End of Engineering PRD.** Any implementation that changes the local-only boundary, exposes real patient data, automates regulated actions or broadens the clinical scope requires explicit product-lead approval and a new version of this specification.
+
+
+---
+
+# APPENDIX B — MEDISTOCK BRAND AND UX REFERENCE
+
+The product name is now **MediStock**. Older sections of this document may retain the original working name CareGrid; treat MediStock as the current product name in all new UI, copy, documentation and implementation work. Do not rename or redesign the established design tokens as part of this clarification.
+
+Before implementing or redesigning any public-facing or authenticated screen, read [docs/UX_INSPIRATION.md](./docs/UX_INSPIRATION.md). It contains curated Mobbin, Dribbble and Behance references, what to inspect in each, MediStock-specific design direction, anti-patterns and instructions for coding agents. The guide is research input only: this PRD remains authoritative for scope, data semantics, design tokens, responsive behaviour and acceptance criteria. Do not copy third-party assets or exact layouts.
+
+The public landing page must not use the generic SaaS hero composition (copy on the left, floating dashboard on the right). Explore distinctive editorial, asymmetric, product-led and workflow storytelling compositions using the existing design system. The authenticated workspace must remain operationally clear, data-dense where needed, accessible and task-focused.
+
+The planned Python FastAPI backend is documented separately in [docs/BACKEND_IMPLEMENTATION_GUIDE.md](./docs/BACKEND_IMPLEMENTATION_GUIDE.md). That guide describes the future backend boundary and phased implementation; it does not change the current frontend-only, local-first demo boundary in this PRD.
