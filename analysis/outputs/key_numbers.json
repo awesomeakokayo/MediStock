@@ -1,0 +1,156 @@
+{
+  "integrity": {
+    "tables": {
+      "country": 32,
+      "date": 28,
+      "health_system": 212,
+      "performance": 5936,
+      "workforce": 1484
+    },
+    "missing_values": 0,
+    "duplicate_rows": 0,
+    "orphan_keys": 0,
+    "country_mismatch": 0
+  },
+  "icu_phase_mean": {
+    "Pre-Pandemic": 72.31,
+    "Acute Pandemic": 81.81,
+    "Recovery": 76.28,
+    "Post-Pandemic": 72.15
+  },
+  "share_icu_ge85_by_phase_pct": {
+    "Pre-Pandemic": 1.2,
+    "Acute Pandemic": 36.0,
+    "Recovery": 7.5,
+    "Post-Pandemic": 0.6
+  },
+  "share_icu_ge90_by_phase_pct": {
+    "Pre-Pandemic": 0.0,
+    "Acute Pandemic": 9.3,
+    "Recovery": 0.8,
+    "Post-Pandemic": 0.0
+  },
+  "icu_peak_rise_pts": {
+    "median": 13.9,
+    "min": 5.3,
+    "max": 26.8
+  },
+  "countries_icu_within_2pts_2024": 32,
+  "ed_gap_2024_pts": {
+    "median": -9.4,
+    "min": -16.0,
+    "max": -5.8,
+    "countries_below_baseline": 32
+  },
+  "wait_2024_vs_baseline_pct_median": 31.0,
+  "wait_tiers": {
+    "Partly recovered": 22,
+    "Recovered": 8,
+    "Stalled": 2
+  },
+  "wait_recovered_countries": [
+    "Denmark",
+    "Finland",
+    "Germany",
+    "Japan",
+    "New Zealand",
+    "Norway",
+    "South Korea",
+    "Sweden"
+  ],
+  "median_share_recovered_pct": {
+    "recov_icu": 101.6,
+    "recov_ed": 43.6,
+    "recov_wait": 68.0
+  },
+  "lag_icu_peak_to_ed_low_quarters": {
+    "median": 6.0,
+    "countries_ed_low_after_icu_peak": 30
+  },
+  "icu_peak_by_income_group": {
+    "High income": 12.7,
+    "Low income": 19.2,
+    "Lower middle income": 21.7,
+    "Upper middle income": 12.7
+  },
+  "ed_low_quarter": {
+    "equal_weight": [
+      "2022 Q3",
+      64.64
+    ],
+    "pop_weighted": [
+      "2022 Q2",
+      57.37
+    ]
+  },
+  "share_region_quarters_ed_below70_2019_pct": 9.6,
+  "share_region_quarters_ed_below70_2022_pct": 67.5,
+  "respiratory_baseline_pct": 8.85,
+  "icu_regional_range_pts_by_phase": {
+    "Pre-Pandemic": 10.5,
+    "Acute Pandemic": 8.1,
+    "Recovery": 9.3,
+    "Post-Pandemic": 10.9
+  },
+  "countries_2021Q1_with_region_ge85_and_region_lt75": 0,
+  "beds_per_1000": {
+    "2019": 3.82,
+    "2024": 3.64,
+    "change_pct": -4.8
+  },
+  "spend_per_person_usd": {
+    "2019": 4430,
+    "2024": 5274,
+    "change_pct": 19.0
+  },
+  "countries_beds_down_spend_up": [
+    32,
+    32
+  ],
+  "workforce_corr_region_years": 0.58,
+  "workforce_corr_within_year_range": [
+    0.35,
+    0.49
+  ],
+  "los_between_country_sd_days": 3.06,
+  "los_within_region_sd_days": 0.18,
+  "recovered8_vs_rest_median": {
+    "spend": {
+      "others": 722.7,
+      "recovered": 5236.1
+    },
+    "staff": {
+      "others": 7.4,
+      "recovered": 15.1
+    }
+  },
+  "efficiency_model": {
+    "r2": 0.627,
+    "n": 32,
+    "rank_corr_spend_only": 0.96,
+    "rank_corr_plus_beds": 0.97,
+    "rank_corr_plus_income": 0.89
+  },
+  "los_vs_beds_spearman": [
+    0.71,
+    0.0
+  ],
+  "uk_vs_eu": {
+    "elective_wait_weeks_2019": [
+      7.8,
+      8.9
+    ],
+    "elective_wait_weeks_2024": [
+      15.5,
+      11.5
+    ],
+    "spend_avg_uk_eu": [
+      4781,
+      5537
+    ],
+    "vacancy_2024_uk_eu": [
+      13.6,
+      7.2
+    ]
+  }
+}

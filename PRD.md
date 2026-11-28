@@ -3,10 +3,17 @@
 **Product:** CareGrid  
 **Document type:** Engineering PRD / implementation specification  
 **Audience:** Frontend developers, coding agents, technical lead, QA and future backend engineers  
-**Version:** 1.1 (design system, responsive spec and team-split revision)  
+**Version:** 1.2 (evidence-base and submission-alignment revision)  
 **Status:** Initial build specification for the 48-hour hackathon demo  
 **Date:** 27 November 2026  
 **Primary implementation target:** Interactive local-first web frontend; no production backend in this phase
+
+> **Revision 1.2 (27 November 2026) — what changed from 1.1**
+>
+> - **Evidence base:** the problem statement is now tied to the hackathon dataset and the analytical report (new subsection in Section 0). The report is the primary submission document; this PRD must stay consistent with it.
+> - **Seed data:** the simulated demand surge follows the shape of the dataset's respiratory-illness index, labelled as an assumption (Section 17.2).
+> - **Resource match:** reframed as surplus-supply coordination. The data analysis found no overloaded-next-to-spare regions within countries, so it must not be pitched as a fix for the ICU surge (Sections 7.7 and 31).
+> - **Submission:** deliverables, deadline and report-consistency checks added to Sections 31–33.
 
 > **Revision 1.1 (27 November 2026) — what changed from 1.0**
 >
@@ -59,6 +66,33 @@ Two contributors work in the same repository at the same time. Ownership is **by
 7. **Integration checkpoints** every ~6 hours: merge both tracks and run the judge demo path (Section 31) end to end.
 
 **Instruction for coding agents:** before editing anything, identify which track the person is working on and stay inside that track's folders. If a task needs changes in the other track's files, stop and tell the person instead of making the change.
+
+### Evidence base and submission deliverables (v1.2)
+
+CareGrid's problem statement comes from the hackathon dataset, not from assumption. The analytical report (`docs/report/`) shows how. This PRD must stay consistent with it.
+
+**What the data showed** (simulated dataset: 32 countries, 212 regions, 2018–2024):
+
+| # | Finding | Product implication |
+|---|---|---|
+| 1 | ICU occupancy was back to baseline in all 32 countries by 2024, but the ED 4-hour rate was still below baseline in all 32 (median gap 9.4 points) and elective waits were a median 31% above baseline. | Position CareGrid around patient flow and supply readiness, not bed counts. |
+| 2 | ED performance bottomed out a median of 6 quarters after ICU occupancy peaked. | Stock-cover and consumption signals should lead, not lag. |
+| 3 | Beds per 1,000 fell 4.8% while spending per person rose 19% (nominal USD), in all 32 countries. | The ledger separates purchases, receipts, issues and consumption so spend can be traced to use. |
+| 4 | Spending and staffing explain about 63% of outcome differences; the rest is unexplained. | Facility-level operational data is the missing layer. |
+| 5 | The dataset has no inventory, procurement, wastage or environmental fields. | The evidence gap is the problem; CareGrid captures those records. |
+| 6 | No overloaded-next-to-spare regions appeared within countries during the acute surge. | The resource match is surplus-supply coordination, never a surge-capacity fix. |
+
+**Rules for the build and the pitch**
+
+1. Seeded demo records are simulated. Never present them as findings from the dataset.
+2. Make no claim of measured stockout, waste, procurement or emissions results.
+3. The seeded demand surge follows the dataset's respiratory-illness curve and is stated as an assumption (Section 17.2).
+4. The report and the deck may describe only features that exist in the build at submission.
+5. Every number taken from the dataset carries the word "synthetic".
+
+**Deliverables and deadline.** Analytical report (PDF), pitch deck, working demo link plus a local fallback, all submitted before **30 November 2026, 10:59 PM GMT** (11:59 PM in Nigeria, WAT). Confirm with the organisers how the report and the prototype are each scored: the challenge brief describes an analytical report.
+
+**Repository placement.** `docs/PRD.md` (this file); `docs/report/` (report in Markdown and PDF); `analysis/` (scripts, derived tables, README); `AGENTS.md` (rules for AI tools: the report is context, not a build specification). Keep the raw challenge CSVs out of version control until the organisers' terms are checked.
 
 ---
 
@@ -227,6 +261,8 @@ Equipment is a reusable asset and must not be included in medicine consumption c
 4. It checks quantity, batch status and remaining shelf life in the demo rules.
 5. It displays match rationale, limitations and required approvals.
 6. It does not execute a transfer or claim that another organisation has accepted it.
+
+*Positioning note (v1.2).* The dataset analysis found no case of an overloaded region sitting beside a region with spare ICU capacity in the same country. The match is therefore presented as coordination of surplus supplies (for example stock nearing expiry at one facility and short at another), never as a response to the ICU surge.
 
 ---
 
@@ -1230,7 +1266,7 @@ Use generic demo products and non-sensitive sample data. Avoid presenting sample
 Seed enough synthetic transaction history to demonstrate:
 
 - A product with regular weekly consumption.
-- A product with a seasonal or recent demand increase (clearly simulated).
+- A product with a recent demand surge (clearly simulated). Shape the surge on the challenge dataset's respiratory-illness index (baseline 1.00), mapped onto the seeded history window one step per month: 1.24, 1.14, 1.23, 1.27, 1.18, 1.19, 1.10, 1.08, 1.05, 1.05, 1.03, 1.00. Apply it to one or two general consumables at Riverside General Hospital (for example examination gloves). Label it in the UI and in the demo script as a simulation assumption adapted from the dataset's curve, not a finding.
 - A product with an expiry risk.
 - A facility with low usable stock.
 - A facility with eligible surplus of the same product and unit.
@@ -1615,6 +1651,8 @@ Do not sacrifice data correctness to add more pages. A smaller application with 
 - Resource exchange is a simulated recommendation, not a live transaction.
 - The system does not diagnose or prescribe.
 - The frontend stores data locally; there is no central backend yet.
+- The demand surge in the seeded data is a simulation assumption adapted from the challenge dataset's curve, not a finding.
+- The resource match coordinates surplus supplies; it is not claimed as a fix for ICU or surge capacity.
 
 ## 32. Definition of Done — Hackathon Frontend
 
@@ -1644,10 +1682,21 @@ The demo is ready when:
 - [ ] Demo data indicator visible at every breakpoint.
 - [ ] Demo script has been rehearsed from reset.
 
+**Submission checklist (v1.2)**
+
+- [ ] Analytical report exported to PDF and checked against the build: every feature it describes exists.
+- [ ] Every number in the report and deck traces to `analysis/` outputs and is marked synthetic.
+- [ ] Pitch deck problem slide uses the report's findings; no stockout, waste or emissions results are claimed.
+- [ ] Demo link and local fallback both tested.
+- [ ] Submitted before 30 November 2026, 10:59 PM GMT (11:59 PM WAT).
+
 ## 33. Known Risks and Mitigations
 
 | Risk | Impact | Mitigation |
 |---|---|---|
+| Report or deck describes features that are not built | Loses credibility with judges; weakens the technical score | Final read-through of the report's Section 5 against the running demo; cut anything not shown |
+| Dataset figures presented as real-world evidence | Misleading claims | Keep the "synthetic" label on every chart and number; follow the evidence-base rules in Section 0 |
+| Judges expect a prototype to use the dataset directly | Perceived mismatch between report and product | Pitch the dataset as the evidence for the problem and CareGrid as the missing data layer; be explicit that the dataset has no supply or waste fields |
 | Too much scope for 48 hours | Incomplete or shallow product | Protect inventory ledger, persistence and analytics first. |
 | Inconsistent movement calculations | Dashboard cannot be trusted | Derive balances from movement ledger and test invariants. |
 | Data entry is burdensome | Poor adoption | Optimise frequent flows, use defaults and future barcode/import support. |
@@ -1770,7 +1819,7 @@ Copy into the global stylesheet. Map these to the Tailwind theme (`theme.extend.
 
 ---
 
-# APPENDIX B — MEDISTOCK BRAND AND UX REFERENCE
+# APPENDIX B � MEDISTOCK BRAND AND UX REFERENCE
 
 The product name is now **MediStock**. Older sections of this document may retain the original working name CareGrid; treat MediStock as the current product name in all new UI, copy, documentation and implementation work. Do not rename or redesign the established design tokens as part of this clarification.
 
